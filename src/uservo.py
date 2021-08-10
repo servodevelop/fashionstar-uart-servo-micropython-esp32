@@ -627,8 +627,7 @@ class UartServoManager:
 		while True:
 			# 读入所有缓冲区的Bytes
 			buffer_bytes = self.uart.read()
-			
-			if len(buffer_bytes) != 0:
+			if buffer_bytes is not None and len(buffer_bytes) != 0:
 				if self.is_debug:
 					print('Recv Bytes: ')
 					print(' '.join(['0x%02x'%b for b in buffer_bytes]))
